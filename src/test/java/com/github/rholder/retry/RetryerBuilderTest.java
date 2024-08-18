@@ -276,6 +276,11 @@ public class RetryerBuilderTest {
                     public boolean apply(Throwable t) {
                         return t instanceof IOException;
                     }
+
+                    @Override
+                    public boolean test(Throwable t) {
+                        return apply(t);
+                    }
                 })
                 .build();
         assertTrue(retryer.call(callable));
@@ -294,6 +299,11 @@ public class RetryerBuilderTest {
                     @Override
                     public boolean apply(Throwable t) {
                         return t instanceof IOException;
+                    }
+
+                    @Override
+                    public boolean test(Throwable t) {
+                        return apply(t);
                     }
                 })
                 .withStopStrategy(StopStrategies.stopAfterAttempt(3))

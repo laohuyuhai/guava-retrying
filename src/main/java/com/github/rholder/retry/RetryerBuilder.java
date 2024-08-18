@@ -211,6 +211,11 @@ public class RetryerBuilder<V> {
             }
             return exceptionClass.isAssignableFrom(attempt.getExceptionCause().getClass());
         }
+
+        @Override
+        public boolean test(Attempt<V> attempt) {
+            return apply(attempt);
+        }
     }
 
     private static final class ResultPredicate<V> implements Predicate<Attempt<V>> {
@@ -229,6 +234,11 @@ public class RetryerBuilder<V> {
             V result = attempt.getResult();
             return delegate.apply(result);
         }
+
+        @Override
+        public boolean test(Attempt<V> attempt) {
+            return apply(attempt);
+        }
     }
 
     private static final class ExceptionPredicate<V> implements Predicate<Attempt<V>> {
@@ -245,6 +255,11 @@ public class RetryerBuilder<V> {
                 return false;
             }
             return delegate.apply(attempt.getExceptionCause());
+        }
+
+        @Override
+        public boolean test(Attempt<V> attempt) {
+            return apply(attempt);
         }
     }
 }
