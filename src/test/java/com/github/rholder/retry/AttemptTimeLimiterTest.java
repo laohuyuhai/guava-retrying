@@ -16,7 +16,6 @@
 
 package com.github.rholder.retry;
 
-import com.google.common.util.concurrent.UncheckedTimeoutException;
 import org.junit.Assert;
 import org.junit.Test;
 

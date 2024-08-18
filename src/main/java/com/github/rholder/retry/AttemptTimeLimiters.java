@@ -48,7 +48,7 @@ public class AttemptTimeLimiters {
     /**
      * For control over thread management, it is preferable to offer an {@link ExecutorService} through the other
      * factory method, {@link #fixedTimeLimit(long, TimeUnit, ExecutorService)}. See the note on
-     * {@link SimpleTimeLimiter#SimpleTimeLimiter(ExecutorService)}, which this AttemptTimeLimiter uses.
+     * {@link SimpleTimeLimiter#create(ExecutorService)}, which this AttemptTimeLimiter uses.
      *
      * @param duration that an attempt may persist before being circumvented
      * @param timeUnit of the 'duration' arg
